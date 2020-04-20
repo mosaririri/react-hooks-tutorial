@@ -1,10 +1,24 @@
+/*
+* イベント
+*/
 type Event = {
     id: number,
     title: string,
     body: string
 }
 
-const events = (state: Event[] = [], action: any) => {
+/*
+*  アクション
+*/
+type Action = {
+    type: string,
+    title: string,
+    body: string
+}
+/*
+* reducer: 状態を表すstate,変化を起こすaction
+*/
+const events = (state: Event[] = [], action: Action) => {
    switch(action.type) {
        case 'CREATE_EVENT':
            const event = { title: action.title, body: action.body }
