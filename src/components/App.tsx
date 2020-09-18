@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import reducer from '../reducers'
+import Event from './Event'
 // bootstrap導入後、コメントを解けばスタイルが適用される
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -17,6 +18,7 @@ const App = () => {
     // actionにはtypeが必要
     dispatch({
       type: 'CREATE_EVENT',
+      id: 0,
       title,
       body
     })
@@ -43,7 +45,7 @@ const App = () => {
           }}/>
         </div>
 
-        <button className='btn btn-promary' onClick={addEvent}>イベントを作成する</button>
+        <button className='btn btn-primary' onClick={addEvent}>イベントを作成する</button>
         <button className='btn btn-danger'>全てのイベントを削除する</button>
         {/* <button className='btn btn-danger'>全ての操作ログを削除する</button> */}
 
@@ -59,6 +61,31 @@ const App = () => {
 
           </thead>
           <tbody>
+            {state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch} />))}
+            {
+              state.map((event, index) => { // ()でくくるとreturnの意味になるらしい
+
+                const id = event.id
+
+                const handleClickDeleteButton = () => {
+                  // 状態を変えるためにdispatchを呼ぶ
+                  dispatch({
+                    type:'DELETE_EVENT',
+                    id,
+                    title: '',
+                    body: ''
+                  }) 
+                }
+                return (
+                  <tr key={index}>
+                    <td>{ id }</td>
+                    <td>{ event.title }</td>
+                    <td>{ event.body }</td>
+                    <td><button type="button" className="btn btn-danger" onClick={handleClickDeleteButton}>削除</button></td>
+                  </tr>
+                )
+              })
+            }
 
           </tbody>
         </table>
