@@ -11,7 +11,12 @@ const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
+  const unCreatable = title === '' || body === '';
 
+  /**
+   * イベント追加ボタン押下時の処理
+   * @param event
+   */
   const addEvent = (event: ChangeType) => {
     event.preventDefault(); //デフォルト動作の抑止
 
@@ -26,6 +31,17 @@ const App: React.FC = () => {
 
     setTitle('');
     setBody('');
+  };
+
+  /**
+   * 全てのイベントを削除を押下時の処理
+   * @param event
+   */
+  const deleteAllEvents = (event: ChangeType) => {
+    event.preventDefault();
+    if (window.confirm('全てのイベントを削除します')) {
+      dispatch({ type: 'DELETE_ALL_EVENTS', id: 0, title: '', body: '' });
+    }
   };
 
   return (
@@ -55,10 +71,20 @@ const App: React.FC = () => {
           />
         </div>
 
-        <button className="btn btn-primary" onClick={addEvent}>
+        <button
+          className="btn btn-primary"
+          disabled={unCreatable}
+          onClick={addEvent}
+        >
           イベントを作成する
         </button>
-        <button className="btn btn-danger">全てのイベントを削除する</button>
+        <button
+          className="btn btn-danger"
+          disabled={state.length === 0}
+          onClick={deleteAllEvents}
+        >
+          全てのイベントを削除する
+        </button>
         {/* <button className='btn btn-danger'>全ての操作ログを削除する</button> */}
 
         <h4>イベント一覧</h4>

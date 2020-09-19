@@ -6,15 +6,20 @@ const Event = (props: EventProps) => {
 
   const id: number = props.event.id;
 
+  /**
+   * 削除ボタン押下時の処理
+   */
   const handleClickDeleteButton: () => void = () => {
     // 状態を変えるためにdispatchを呼ぶ
     console.log(props);
-    props.dispatch({
-      type: 'DELETE_EVENT',
-      id,
-      title: '',
-      body: '',
-    });
+    if (window.confirm(`id=${id}を削除します`)) {
+      props.dispatch({
+        type: 'DELETE_EVENT',
+        id,
+        title: '',
+        body: '',
+      });
+    }
   };
 
   return (
