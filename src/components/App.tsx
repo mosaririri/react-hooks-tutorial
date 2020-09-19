@@ -3,15 +3,17 @@ import reducer from '../reducers';
 import Event from './Event';
 import EventType from '../types/EventType';
 // bootstrap導入後、コメントを解けばスタイルが適用される
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
-  const [state, dispatch] = useReducer(reducer, []);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+const App: React.FC = () => {
+  const initialState: EventType[] = [];
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [title, setTitle] = useState<string>('');
+  const [body, setBody] = useState<string>('');
+  type ChangeType = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-  const addEvent = (e: any) => {
-    e.preventDefault(); //デフォルト動作の抑止
+  const addEvent = (event: ChangeType) => {
+    event.preventDefault(); //デフォルト動作の抑止
 
     // dispatchを呼ぶにはactionが必要
     // actionにはtypeが必要
