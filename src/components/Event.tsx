@@ -1,16 +1,15 @@
 import React from 'react';
+import EventProps from '../types/EventProps';
 
-import EventType from '../types/EventType';
+const Event = (props: EventProps) => {
+  console.log(props);
 
-const Event = (key: number, dispatch: any, event: EventType) => {
-  console.log(event);
-  console.log(dispatch);
+  const id: number = props.event.id;
 
-  const id = event.id;
-
-  const handleClickDeleteButton = () => {
+  const handleClickDeleteButton: () => void = () => {
     // 状態を変えるためにdispatchを呼ぶ
-    dispatch({
+    console.log(props);
+    props.dispatch({
       type: 'DELETE_EVENT',
       id,
       title: '',
@@ -19,10 +18,10 @@ const Event = (key: number, dispatch: any, event: EventType) => {
   };
 
   return (
-    <tr key={key}>
-      <td>{dispatch.event.id}</td>
-      <td>{dispatch.event.title}</td>
-      <td>{dispatch.event.body}</td>
+    <tr>
+      <td>{id}</td>
+      <td>{props.event.title}</td>
+      <td>{props.event.body}</td>
       <td>
         <button
           type="button"

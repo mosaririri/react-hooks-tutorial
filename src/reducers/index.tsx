@@ -10,6 +10,7 @@ const events = (state: EventType[] = [], action: Action) => {
       const event = { title: action.title, body: action.body };
       const length = state.length;
       const id = length === 0 ? 1 : state[length - 1].id + 1;
+      // stateにeventを追加
       return [...state, { id, ...event }];
     case 'DELETE_EVENT':
       return state.filter((event) => event.id !== action.id);

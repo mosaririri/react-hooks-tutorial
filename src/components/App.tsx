@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react';
 import reducer from '../reducers';
 import Event from './Event';
 import EventType from '../types/EventType';
+import ChangeType from '../types/ChangeType';
 // bootstrap導入後、コメントを解けばスタイルが適用される
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,7 +11,6 @@ const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
-  type ChangeType = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
   const addEvent = (event: ChangeType) => {
     event.preventDefault(); //デフォルト動作の抑止
@@ -72,10 +72,10 @@ const App: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {state.map((event, index) => (
-              <Event index={index} event={event} dispatch={dispatch} />
-            ))} */}
-            {state.map((event: EventType, index: number) => {
+            {state.map((event) => (
+              <Event event={event} dispatch={dispatch} />
+            ))}
+            {/* {state.map((event: EventType, index: number) => {
               // ()でくくるとreturnの意味になるらしい
 
               const id = event.id;
@@ -106,7 +106,7 @@ const App: React.FC = () => {
                   </td>
                 </tr>
               );
-            })}
+            })} */}
           </tbody>
         </table>
       </form>
