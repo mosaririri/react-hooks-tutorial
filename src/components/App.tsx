@@ -16,7 +16,7 @@ const App: React.FC = () => {
    */
   return (
     <div className="container-fluid">
-      <EventForm state={state} dispatch={dispatch} />
+      <EventForm events={state} dispatch={dispatch} />
       <h4>イベント一覧</h4>
       <table className="table table-hover">
         <thead>

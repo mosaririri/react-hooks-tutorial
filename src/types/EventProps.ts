@@ -1,9 +1,13 @@
 import EventType from '../types/EventType';
-import Action from '../types/Action';
+import DispatchTyoe from './DispatchType';
 
-type EventProps = {
+// type EventProps = {
+//   event: EventType;
+//   dispatch: React.Dispatch<Action>;
+// };
+
+type EventProps = DispatchTyoe & {
   event: EventType;
-  dispatch: React.Dispatch<Action>;
 };
 
 export default EventProps;

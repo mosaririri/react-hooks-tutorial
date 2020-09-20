@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ChangeType from '../types/ChangeType';
+import EventsProps from '../types/EventsProps';
 
-const EventForm = (props: any) => {
-  console.log(props);
-
+const EventForm = (props: EventsProps) => {
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
   const unCreatable = title === '' || body === '';
@@ -75,7 +74,7 @@ const EventForm = (props: any) => {
         </button>
         <button
           className="btn btn-danger"
-          disabled={props.state.length === 0}
+          disabled={props.events.length === 0}
           onClick={deleteAllEvents}
         >
           全てのイベントを削除する
