@@ -1,6 +1,6 @@
-import ActionType from './ActionTyoe';
+import EventsActionType from './EventsActionType';
 type DispatchType = {
-  dispatch: React.Dispatch<ActionType>;
+  dispatch: React.Dispatch<EventsActionType>;
 };
 
 export default DispatchType;

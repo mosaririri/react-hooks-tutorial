@@ -1,11 +1,11 @@
 /*
  *  アクション
  */
-type Action = {
+type EventsActionType = {
   type: string;
   id: number;
   title: string;
   body: string;
 };
 
-export default Action;
+export default EventsActionType;

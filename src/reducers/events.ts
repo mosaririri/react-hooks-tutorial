@@ -1,10 +1,10 @@
 import EventType from '../types/EventType';
-import ActionType from '../types/ActionTyoe';
+import EventsActionTyoe from '../types/EventsActionType';
 import { DELETE_EVENT, DELETE_ALL_EVENTS, CREATE_EVENT } from '../actions';
 /*
  * reducer: 状態を表すstate,変化を起こすaction
  */
-const events = (state: EventType[] = [], action: ActionType) => {
+const events = (state: EventType[] = [], action: EventsActionTyoe) => {
   switch (action.type) {
     case CREATE_EVENT:
       const event = { title: action.title, body: action.body };

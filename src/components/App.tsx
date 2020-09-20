@@ -2,15 +2,16 @@ import React, { useReducer } from 'react';
 import reducer from '../reducers';
 import Events from './Events';
 import EventForm from './EventForm';
+import AppReducerType from '../types/AppReducerType';
 
 import AppContext from '../contexts/AppContext';
 // bootstrap導入後、コメントを解けばスタイルが適用される
 import 'bootstrap/dist/css/bootstrap.min.css';
-import EventsProps from '../types/EventsProps';
 
 const App: React.FC = () => {
-  const initialState: EventsProps = {
+  const initialState: AppReducerType = {
     events: [],
+    operationLogs: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
