@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Event from './Event';
 import EventType from '../types/EventType';
-import EventsProps from '../types/EventsProps';
+import AppContext from '../contexts/AppContext';
 
-const Events = (props: EventsProps) => {
+const Events = () => {
+  const { state } = useContext(AppContext);
+
   return (
     <>
       <h4>イベント一覧</h4>
@@ -17,8 +19,8 @@ const Events = (props: EventsProps) => {
           </tr>
         </thead>
         <tbody>
-          {props.events.map((event: EventType, index: number) => (
-            <Event key={index} event={event} dispatch={props.dispatch} />
+          {state.map((event: EventType, index: number) => (
+            <Event key={index} event={event} />
           ))}
           {/* {state.map((event: EventType, index: number) => {
               // ()でくくるとreturnの意味になるらしい

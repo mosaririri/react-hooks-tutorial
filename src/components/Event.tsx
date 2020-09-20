@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
 import EventProps from '../types/EventProps';
+import EventType from '../types/EventType';
 import { DELETE_EVENT } from '../actions';
 import AppContext from '../contexts/AppContext';
-const Event = (props: EventProps) => {
-  console.log(props);
 
-  const id: number = props.event.id;
+const Event = (props: EventProps) => {
+  const { dispatch } = useContext(AppContext);
+  const event: EventType = props.event;
+
+  const id: number = event.id;
 
   /**
    * 削除ボタン押下時の処理
    */
   const handleClickDeleteButton: () => void = () => {
     // 状態を変えるためにdispatchを呼ぶ
-    console.log(props);
     if (window.confirm(`id=${id}を削除します`)) {
-      props.dispatch({
+      dispatch({
         type: DELETE_EVENT,
         id,
         title: '',
@@ -22,15 +24,13 @@ const Event = (props: EventProps) => {
       });
     }
   };
-  const value = useContext(AppContext);
 
   return (
     <>
-      <div>{value}</div>
       <tr>
         <td>{id}</td>
-        <td>{props.event.title}</td>
-        <td>{props.event.body}</td>
+        <td>{event.title}</td>
+        <td>{event.body}</td>
         <td>
           <button
             type="button"

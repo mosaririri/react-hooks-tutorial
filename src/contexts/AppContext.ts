@@ -1,5 +1,8 @@
 import { createContext } from 'react';
 
-const AppContext = createContext('hogehoge');
+const AppContext: any = createContext({
+  events: [],
+  dispatch: {},
+});
 
 export default AppContext;

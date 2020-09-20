@@ -16,10 +16,10 @@ const App: React.FC = () => {
    * @param event
    */
   return (
-    <AppContext.Provider value={'Hello'}>
+    <AppContext.Provider value={{ state, dispatch }}>
       <div className="container-fluid">
-        <EventForm events={state} dispatch={dispatch} />
-        <Events events={state} dispatch={dispatch} />
+        <EventForm />
+        <Events />
       </div>
     </AppContext.Provider>
   );

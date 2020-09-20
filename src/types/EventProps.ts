@@ -6,7 +6,7 @@ import DispatchTyoe from './DispatchType';
 //   dispatch: React.Dispatch<Action>;
 // };
 
-type EventProps = DispatchTyoe & {
+type EventProps = {
   event: EventType;
 };
 

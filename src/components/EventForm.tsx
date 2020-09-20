@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 import ChangeType from '../types/ChangeType';
-import EventsProps from '../types/EventsProps';
+import AppContext from '../contexts/AppContext';
 
-const EventForm = (props: EventsProps) => {
+const EventForm = () => {
+  const { state, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
   const unCreatable = title === '' || body === '';
@@ -17,7 +18,7 @@ const EventForm = (props: EventsProps) => {
 
     // dispatchを呼ぶにはactionが必要
     // actionにはtypeが必要
-    props.dispatch({
+    dispatch({
       type: CREATE_EVENT,
       id: 0,
       title,
@@ -35,7 +36,7 @@ const EventForm = (props: EventsProps) => {
   const deleteAllEvents = (event: ChangeType) => {
     event.preventDefault();
     if (window.confirm('全てのイベントを削除します')) {
-      props.dispatch({ type: DELETE_ALL_EVENTS, id: 0, title: '', body: '' });
+      dispatch({ type: DELETE_ALL_EVENTS, id: 0, title: '', body: '' });
     }
   };
 
@@ -75,7 +76,7 @@ const EventForm = (props: EventsProps) => {
         </button>
         <button
           className="btn btn-danger"
-          disabled={props.events.length === 0}
+          disabled={state.length === 0}
           onClick={deleteAllEvents}
         >
           全てのイベントを削除する
