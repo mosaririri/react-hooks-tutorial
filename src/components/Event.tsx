@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import EventProps from '../types/EventProps';
 import { DELETE_EVENT } from '../actions';
+import AppContext from '../contexts/AppContext';
 const Event = (props: EventProps) => {
   console.log(props);
 
@@ -21,22 +22,26 @@ const Event = (props: EventProps) => {
       });
     }
   };
+  const value = useContext(AppContext);
 
   return (
-    <tr>
-      <td>{id}</td>
-      <td>{props.event.title}</td>
-      <td>{props.event.body}</td>
-      <td>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={handleClickDeleteButton}
-        >
-          削除
-        </button>
-      </td>
-    </tr>
+    <>
+      <div>{value}</div>
+      <tr>
+        <td>{id}</td>
+        <td>{props.event.title}</td>
+        <td>{props.event.body}</td>
+        <td>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleClickDeleteButton}
+          >
+            削除
+          </button>
+        </td>
+      </tr>
+    </>
   );
 };
 

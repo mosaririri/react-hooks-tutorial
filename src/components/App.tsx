@@ -3,6 +3,7 @@ import reducer from '../reducers';
 import Event from './Event';
 import EventType from '../types/EventType';
 import EventForm from './EventForm';
+import AppContext from '../contexts/AppContext';
 // bootstrap導入後、コメントを解けばスタイルが適用される
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,23 +16,24 @@ const App: React.FC = () => {
    * @param event
    */
   return (
-    <div className="container-fluid">
-      <EventForm events={state} dispatch={dispatch} />
-      <h4>イベント一覧</h4>
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>ボディー</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {state.map((event, index) => (
-            <Event key={index} event={event} dispatch={dispatch} />
-          ))}
-          {/* {state.map((event: EventType, index: number) => {
+    <AppContext.Provider value={'Hello'}>
+      <div className="container-fluid">
+        <EventForm events={state} dispatch={dispatch} />
+        <h4>イベント一覧</h4>
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>タイトル</th>
+              <th>ボディー</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {state.map((event, index) => (
+              <Event key={index} event={event} dispatch={dispatch} />
+            ))}
+            {/* {state.map((event: EventType, index: number) => {
               // ()でくくるとreturnの意味になるらしい
 
               const id = event.id;
@@ -63,9 +65,10 @@ const App: React.FC = () => {
                 </tr>
               );
             })} */}
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+    </AppContext.Provider>
   );
 };
 
