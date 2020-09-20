@@ -1,6 +1,6 @@
 import React from 'react';
 import EventProps from '../types/EventProps';
-
+import { DELETE_EVENT } from '../actions';
 const Event = (props: EventProps) => {
   console.log(props);
 
@@ -14,7 +14,7 @@ const Event = (props: EventProps) => {
     console.log(props);
     if (window.confirm(`id=${id}を削除します`)) {
       props.dispatch({
-        type: 'DELETE_EVENT',
+        type: DELETE_EVENT,
         id,
         title: '',
         body: '',

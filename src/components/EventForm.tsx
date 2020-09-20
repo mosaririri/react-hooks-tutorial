@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 import ChangeType from '../types/ChangeType';
 import EventsProps from '../types/EventsProps';
 
@@ -17,7 +18,7 @@ const EventForm = (props: EventsProps) => {
     // dispatchを呼ぶにはactionが必要
     // actionにはtypeが必要
     props.dispatch({
-      type: 'CREATE_EVENT',
+      type: CREATE_EVENT,
       id: 0,
       title,
       body,
@@ -34,7 +35,7 @@ const EventForm = (props: EventsProps) => {
   const deleteAllEvents = (event: ChangeType) => {
     event.preventDefault();
     if (window.confirm('全てのイベントを削除します')) {
-      props.dispatch({ type: 'DELETE_ALL_EVENTS', id: 0, title: '', body: '' });
+      props.dispatch({ type: DELETE_ALL_EVENTS, id: 0, title: '', body: '' });
     }
   };
 
