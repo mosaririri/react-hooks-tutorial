@@ -1,7 +1,7 @@
 import EventType from '../types/EventType';
 import DispatchTyoe from './DispatchType';
 
-type EventsProps = DispatchTyoe & {
+type EventsProps = {
   events: EventType[];
 };
 

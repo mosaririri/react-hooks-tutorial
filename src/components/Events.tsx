@@ -19,41 +19,9 @@ const Events = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((event: EventType, index: number) => (
+          {state.events.map((event: EventType, index: number) => (
             <Event key={index} event={event} />
           ))}
-          {/* {state.map((event: EventType, index: number) => {
-              // ()でくくるとreturnの意味になるらしい
-
-              const id = event.id;
-
-              const handleClickDeleteButton = () => {
-                // 状態を変えるためにdispatchを呼ぶ
-                dispatch({
-                  type: 'DELETE_EVENT',
-                  id,
-                  title: '',
-                  body: '',
-                });
-              };
-
-              return (
-                <tr key={index}>
-                  <td>{id}</td>
-                  <td>{event.title}</td>
-                  <td>{event.body}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      onClick={handleClickDeleteButton}
-                    >
-                      削除
-                    </button>
-                  </td>
-                </tr>
-              );
-            })} */}
         </tbody>
       </table>
     </>
