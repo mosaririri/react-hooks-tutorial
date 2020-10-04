@@ -45,8 +45,8 @@ const EventForm = () => {
    * 全てのイベントを削除を押下時の処理
    * @param event
    */
-  const deleteAllEvents = (event: ChangeType) => {
-    event.preventDefault();
+  const deleteAllEvents = (e: ChangeType) => {
+    e.preventDefault();
     if (window.confirm('全てのイベントを削除します')) {
       dispatch({ type: DELETE_ALL_EVENTS, id: 0, title: '', body: '' });
       dispatch({
