@@ -1,6 +1,10 @@
 import React from 'react';
+import OperationLogType from '../types/OperationLogType';
 
-const OperationLog = (props: any) => {
+const OperationLog = (props: {
+  key: number;
+  operationLog: OperationLogType;
+}) => {
   return (
     <tr>
       <td>{props.operationLog.description}</td>

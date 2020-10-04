@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import OperationLog from './OperationLog';
 import AppContext from '../contexts/AppContext';
+import OperationLogType from '../types/OperationLogType';
 
 const OperationLogs = () => {
   const { state } = useContext(AppContext);
@@ -16,9 +17,11 @@ const OperationLogs = () => {
           </tr>
         </thead>
         <tbody>
-          {state.operationLogs.map((operationLog: any, index: any) => {
-            return <OperationLog key={index} operationLog={operationLog} />;
-          })}
+          {state.operationLogs.map(
+            (operationLog: OperationLogType, index: number) => {
+              return <OperationLog key={index} operationLog={operationLog} />;
+            }
+          )}
         </tbody>
       </table>
     </>
